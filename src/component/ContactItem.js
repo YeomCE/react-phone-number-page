@@ -4,16 +4,20 @@ import { useSelector, useDispatch } from 'react-redux'
 const ContactItem = ({item}) => {
 
     const contactList = useSelector(state => state.contactList)
+    const searchList = useSelector(state => state.searchList)
+
     const dispatch = useDispatch();
 
     const deleteButton =(e)=>{
         let deleteName = e.target.previousSibling.firstChild.innerHTML;
         let deleteNumber = e.target.previousSibling.lastChild.innerHTML;
-        
-        let deleteNumberSearch = contactList.filter((item)=>{
+        let deleteNumberContactList = contactList.filter((item)=>{
             return item.name !== deleteName || item.phoneNumber !== deleteNumber
         })
-        dispatch({type: 'DELETE_CONTACT', payload : {deleteNumberSearch}})
+        let deleteNumberSearchList = searchList.filter((item)=>{
+            return item.name !== deleteName || item.phoneNumber !== deleteNumber
+        })
+        dispatch({type: 'DELETE_CONTACT', payload : {deleteNumberContactList, deleteNumberSearchList}})
     }
 
     return (

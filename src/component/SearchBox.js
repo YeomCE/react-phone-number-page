@@ -6,18 +6,20 @@ import { useDispatch } from 'react-redux'
 const SearchBox = () => {
     const [keyword, setKeyword] = useState('');
     const contactList = useSelector(state => state.contactList)
-    let searchValue = []
     const dispatch = useDispatch();
     
 
     const searchButton = (e) => {
         e.preventDefault();
-
-        searchValue = contactList.filter(item => {
+        
+        let searchValue = contactList.filter(item => {
             return item.name.includes(keyword) || item.phoneNumber.includes(keyword)
         })
+        console.log(searchValue)
+
         dispatch({type: 'SEARCH_CONTACT', payload : {searchValue}})
         dispatch({type: 'KEYWORD', payload : {keyword}})
+
     }
 
 

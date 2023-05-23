@@ -9,7 +9,20 @@ const ContactList = () => {
   const searchList = useSelector(state => state.searchList)
   const keyword = useSelector(state => state.keyword)
 
+useEffect(()=>{
+  
+            console.log('CON', contactList)
+            console.log('CON', searchList)
+            console.log('CON', keyword)
+},[contactList])
 
+useEffect(()=>{
+  
+  console.log('SEA',contactList)
+  console.log('SEA',searchList)
+  console.log('SEA',keyword)
+
+},[searchList])
 
   return (
     <div className='contact-list'>
@@ -17,7 +30,8 @@ const ContactList = () => {
 
       {keyword !== '' && searchList.length === 0
         ? alert('검색결과가 없습니다.')
-        : keyword === '' && searchList.length === 0
+
+        : keyword === ''
           ? (
             contactList.map(item => (
               <ContactItem item={item} />
@@ -31,7 +45,7 @@ const ContactList = () => {
           )
       }
 
-      {/* {filteredList.map(item => (
+      {/* {contactList.map(item => (
         <ContactItem item={item}/>
       ))} */}
 

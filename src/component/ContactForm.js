@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
 
 const ContactForm = () => {
 
@@ -10,9 +9,15 @@ const ContactForm = () => {
     const dispatch = useDispatch();
 
     const addContact =(e)=>{
-        e.preventDefault();
-        dispatch({type: 'ADD_CONTACT', payload : {name, phoneNumber}})
-
+        if(name === '' || phoneNumber === ''){
+            e.preventDefault();
+            alert('이름과 전화번호를 모두 입력해주세요')
+            return
+        }
+        else{
+            e.preventDefault();
+            dispatch({type: 'ADD_CONTACT', payload : {name, phoneNumber}})
+        }
     }
 
     return (
