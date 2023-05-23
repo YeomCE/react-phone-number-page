@@ -91,7 +91,6 @@
 }
 .contact-item .info-box button:hover{
   border-radius: 7px;
-  padding: 5px 15px;
   background-color: red;
   color: white;
 }
@@ -108,6 +107,11 @@
   }
   .contact-list{
     margin: 50px 0;
+  }
+  .contact-item .info-box button:hover{
+    border-radius: none;
+    background-color: transparent;
+    color: red;
   }
 }
 @media (max-width:360px){
