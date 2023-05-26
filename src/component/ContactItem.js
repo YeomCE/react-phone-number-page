@@ -18,6 +18,9 @@ const ContactItem = ({item}) => {
             return item.name !== deleteName || item.phoneNumber !== deleteNumber
         })
         dispatch({type: 'DELETE_CONTACT', payload : {deleteNumberContactList, deleteNumberSearchList}})
+
+
+
     }
 
     return (

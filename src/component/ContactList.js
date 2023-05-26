@@ -9,34 +9,32 @@ const ContactList = () => {
   const searchList = useSelector(state => state.searchList)
   const keyword = useSelector(state => state.keyword)
 
-useEffect(()=>{
-  
-            console.log('CON', contactList)
-            console.log('CON', searchList)
-            console.log('CON', keyword)
-},[contactList])
+  // useEffect(() => {
 
-useEffect(()=>{
-  
-  console.log('SEA',contactList)
-  console.log('SEA',searchList)
-  console.log('SEA',keyword)
+  //   console.log('CON', contactList)
+  //   console.log('CON', searchList)
+  //   console.log('CON', keyword)
+  // }, [contactList])
 
-},[searchList])
+  // useEffect(() => {
+
+  //   console.log('SEA', contactList)
+  //   console.log('SEA', searchList)
+  //   console.log('SEA', keyword)
+
+  // }, [searchList])
 
   return (
     <div className='contact-list'>
       <SearchBox />
 
-      {keyword !== '' && searchList.length === 0
-        ? alert('검색결과가 없습니다.')
-
-        : keyword === ''
+      { keyword === ''
           ? (
             contactList.map(item => (
               <ContactItem item={item} />
             ))
           )
+          
           :
           (
             searchList.map(item => (

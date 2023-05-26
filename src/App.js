@@ -1,5 +1,4 @@
 
-import { Container, Row, Col } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ContactForm from './component/ContactForm';
 import ContactList from './component/ContactList';
