@@ -9,13 +9,12 @@ const ContactItem = ({item}) => {
     const dispatch = useDispatch();
 
     const deleteButton =(e)=>{
-        let deleteName = e.target.previousSibling.firstChild.innerHTML;
-        let deleteNumber = e.target.previousSibling.lastChild.innerHTML;
+        let deleteItem = e.target.previousSibling.firstChild.innerHTML;
         let deleteNumberContactList = contactList.filter((item)=>{
-            return item.name !== deleteName || item.phoneNumber !== deleteNumber
+            return item.index !== Number(deleteItem)
         })
         let deleteNumberSearchList = searchList.filter((item)=>{
-            return item.name !== deleteName || item.phoneNumber !== deleteNumber
+            return item.index !== Number(deleteItem)
         })
         dispatch({type: 'DELETE_CONTACT', payload : {deleteNumberContactList, deleteNumberSearchList}})
 
@@ -28,6 +27,7 @@ const ContactItem = ({item}) => {
             <img width={50} src='https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg' alt='' />
             <div className='info-box'>
                 <div className='info'>
+                    <div style={{display:'none'}}>{item.index}</div>
                     <div>{item.name}</div>
                     <div>{item.phoneNumber.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/\-{1,2}$/g, "")}</div>
                 </div>

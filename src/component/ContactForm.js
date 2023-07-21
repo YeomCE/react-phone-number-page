@@ -6,6 +6,7 @@ const ContactForm = () => {
 
     const [name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [index, setIndex] = useState(0)
     const dispatch = useDispatch();
 
     const addContact =(e)=>{
@@ -16,7 +17,8 @@ const ContactForm = () => {
         }
         else{
             e.preventDefault();
-            dispatch({type: 'ADD_CONTACT', payload : {name, phoneNumber}})
+            dispatch({type: 'ADD_CONTACT', payload : {name, phoneNumber, index}})
+            setIndex(index+1)
         }
     }
 
